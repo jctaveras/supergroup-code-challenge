@@ -47,3 +47,10 @@ yarn stop
 ```
 
 This will destroy de current instance of the database so this will result in data loss.
+
+## Features
+
+- Display a list of links ✅
+- Search the list of links ✅
+- User can create new links ✅
+- Realtime update when a new links are created ❌
