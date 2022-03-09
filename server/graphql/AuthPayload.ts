@@ -25,7 +25,8 @@ export const AuthMutations = extendType({
       },
       async resolve(parent, args, ctx, info) {
         const { email } = args;
-        const password = await bcrypt.hash(args.password, 20);
+        const salt = await bcrypt.genSalt(10);
+        const password = await bcrypt.hash(args.password, salt);
         const user = await ctx.prisma.user.create({
           data: {
             email,
@@ -47,14 +48,13 @@ export const AuthMutations = extendType({
       //@ts-ignore
       async resolve(parent, args, ctx, info) {
         const { email } = args;
-        //@ts-ignore
         const user = await ctx.prisma.user.findUnique({ where: { email } });
 
         if (!user) {
           throw new Error('Not user found');
         }
 
-        const isValid = await bcrypt.compare(args.password, user.password );
+        const isValid = await bcrypt.compare(args.password, user.password);
 
         if (!isValid) {
           throw new Error('Invalid Password');

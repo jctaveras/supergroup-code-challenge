@@ -7,7 +7,6 @@ const server = new ApolloServer({ context, schema });
 
 const port = process.env.PORT || 8080;
 
-
 server.listen({ port })
   .then(({ url }) => {
     console.log(`🚀 Server Running on ${url}`);

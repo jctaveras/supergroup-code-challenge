@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { extendType, nonNull, objectType, stringArg, intArg, nullable, enumType, arg, list, inputObjectType } from "nexus";
+import { extendType, nonNull, objectType, stringArg, intArg, nullable, enumType, arg, list, inputObjectType, subscriptionField } from "nexus";
 
 export const Link = objectType({
   name: 'Link',
@@ -42,7 +42,6 @@ export const LinkQuery = extendType({
         take: nullable(intArg()),
         orderBy: arg({ type: list(nonNull('LinkOrderByInput')) }),
       },
-      //@ts-ignore
       async resolve(parent, args, ctx, info) {
         const where = args.filter
           ? {
@@ -75,7 +74,6 @@ export const LinkMutation = extendType({
         description: nonNull(stringArg()),
         url: nonNull(stringArg()),
       },
-      //@ts-ignore
       resolve(parent, args, ctx, info) {
         if (!ctx.userId) {
           throw new Error('Unauthorized!');

@@ -14,7 +14,7 @@ services:
       - .:/server
     environment:
       NODE_ENV: development
-    # command: ["yarn", "dev"]
+    command: ["yarn", "dev"]
     restart: always
     networks:
       - server-net
