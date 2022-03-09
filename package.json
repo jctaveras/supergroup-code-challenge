@@ -1,0 +1,13 @@
+{
+  "name": "supergroup-code-challenge",
+  "version": "1.0.0",
+  "description": "SuperGroup Code Challenge - Monorepo",
+  "main": "index.js",
+  "repository": "http://github.com/jctaveras/supergroup-code-challenge",
+  "author": {
+    "name": "Jean Carlos Taveras",
+    "email": "jean.carlos.taveras@x-team.com"
+  },
+  "license": "MIT",
+  "private": true
+}

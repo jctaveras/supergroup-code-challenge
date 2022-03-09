@@ -1,0 +1,22 @@
+nav {
+  background-color: black;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.btn-log-out,
+.nav-links {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.btn-log-out {
+  background-color: transparent;
+  border: none;
+}
