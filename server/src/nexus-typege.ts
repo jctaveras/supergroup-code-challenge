@@ -68,6 +68,7 @@ export interface NexusGenObjects {
   }
   Mutation: {};
   Query: {};
+  Subscription: {};
   User: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     deletedAt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -119,6 +120,9 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     feed: NexusGenRootTypes['Feed']; // Feed!
   }
+  Subscription: { // field return type
+    newLink: NexusGenRootTypes['Link'] | null; // Link
+  }
   User: { // field return type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     deletedAt: NexusGenScalars['DateTime'] | null; // DateTime
@@ -161,6 +165,9 @@ export interface NexusGenFieldTypeNames {
   }
   Query: { // field return type name
     feed: 'Feed'
+  }
+  Subscription: { // field return type name
+    newLink: 'Link'
   }
   User: { // field return type name
     createdAt: 'DateTime'

@@ -52,6 +52,10 @@ enum Sort {
   desc
 }
 
+type Subscription {
+  newLink: Link
+}
+
 type User {
   createdAt: DateTime!
   deletedAt: DateTime

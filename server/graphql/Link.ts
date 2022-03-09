@@ -92,6 +92,16 @@ export const LinkMutation = extendType({
     });
   }
 });
+// Posible implementation of subscription
+// export const LinkSubscription = subscriptionField('newLink', {
+//   type: 'Link',
+//   async subscribe(parent, args, ctx, info) {
+//     return ctx.prisma.$subcribe.link({ mutation_in: ['CREATED'] }).node();
+//   },
+//   resolve(payload) {
+//     return payload;
+//   }
+// });
 
 export const LinkOrderByInput = inputObjectType({
   name: 'LinkOrderByInput',
