@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Bars } from "react-loader-spinner";
 import { Navigate } from "react-router-dom";
+import { AUTH_TOKEN } from "../../consts";
 import { useDispatch } from "../../context/globa-context";
 import { useSignUpMutation } from "../../generated/graphql";
 
@@ -22,7 +23,7 @@ export default function SignUp() {
     reValidateMode: 'onChange'
   });
 
-  const loginFields = [
+  const signUpFields = [
     {
       label: 'Email',
       name: 'email',
@@ -43,27 +44,24 @@ export default function SignUp() {
     }
   ];
 
-  const onSubmit = handleSubmit((formData) => {
-    signup({ variables: { ...formData } })
-      .then(() => {
-        const payload = {
-          token: data?.signup.token!,
-          user: {
-            id: data?.signup.user.id!,
-            email: data?.signup.user.email!
-          }
-        };
-
-        dispatch({
-          type: 'CURRENT_USER_FETCHED',
-          payload
-        });
-
-        setShouldRedirect(true);
-      })
-      .catch((error) => {
-        console.error(error);
+  const onSubmit = handleSubmit(async (formData) => {
+    try {
+      const data = await signup({ variables: { ...formData } });
+      const payload = {
+        token: data.data?.signup.token!,
+      };
+  
+      dispatch({
+        type: 'CURRENT_USER_FETCHED',
+        payload
       });
+
+      localStorage.setItem(AUTH_TOKEN, payload.token);
+
+      setShouldRedirect(true);    
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   if (loading) {
@@ -77,7 +75,7 @@ export default function SignUp() {
   return (
     <div className="screen-center">
       <form onSubmit={onSubmit}>
-        {loginFields.map(({ label, name, placeholder, type, validation }) => {
+        {signUpFields.map(({ label, name, placeholder, type, validation }) => {
           return (
             <React.Fragment key={name}>
               <label className="input-field-label">{label}</label>

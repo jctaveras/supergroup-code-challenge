@@ -6,7 +6,7 @@ import { useDispatch } from "../../context/globa-context";
 import { useLoginMutation } from "../../generated/graphql";
 
 import './styles.css';
-import { AUTH_TOKE } from "../../consts";
+import { AUTH_TOKEN } from "../../consts";
 
 interface FormValues {
   email: string;
@@ -56,7 +56,7 @@ export default function Login() {
         payload
       });
 
-      localStorage.setItem(AUTH_TOKE, payload.token);
+      localStorage.setItem(AUTH_TOKEN, payload.token);
 
       setShouldRedirect(true);    
     } catch (error) {

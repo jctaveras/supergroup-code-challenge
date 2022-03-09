@@ -8,6 +8,10 @@
     "name": "Jean Carlos Taveras",
     "email": "jean.carlos.taveras@x-team.com"
   },
+  "scripts": {
+    "start": "docker-compose -f server/docker-compose.yml up --build -d && docker exec -d server yarn migrate:deploy && yarn --cwd client start",
+    "stop": "docker-compose -f server/docker-compose.yml down"
+  },
   "license": "MIT",
   "private": true
 }

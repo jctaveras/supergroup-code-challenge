@@ -8,10 +8,10 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 
 import { Provider } from './context/globa-context';
-import { AUTH_TOKE } from './consts';
+import { AUTH_TOKEN } from './consts';
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem(AUTH_TOKE);
+  const token = localStorage.getItem(AUTH_TOKEN);
 
   return {
     headers: {

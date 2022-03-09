@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AUTH_TOKE } from "../../consts";
+import { AUTH_TOKEN } from "../../consts";
 
 import './styles.css';
 
 const Header: FunctionComponent = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem(AUTH_TOKE);
+  const token = localStorage.getItem(AUTH_TOKEN);
   const links = [
     {
       to: '/',
@@ -27,7 +27,7 @@ const Header: FunctionComponent = () => {
   }
 
   const onClick = () => {
-    localStorage.removeItem(AUTH_TOKE);
+    localStorage.removeItem(AUTH_TOKEN);
     navigate('/', { replace: true });
   }
 
